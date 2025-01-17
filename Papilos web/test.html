@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email senden</title>
+    <script>
+        async function sendEmail() {
+            const response = await fetch("https://api.dein-email-service.com/send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer DEIN_API_KEY"
+                },
+                body: JSON.stringify({
+                    to: "kim.hofmann@besonet.ch",
+                    subject: "Hallo von meiner Website!",
+                    text: "Dies ist eine automatisch gesendete Nachricht."
+                })
+            });
+
+            if (response.ok) {
+                alert("E-Mail wurde erfolgreich gesendet!");
+            } else {
+                alert("Fehler beim Senden der E-Mail.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="sendEmail()">E-Mail senden</button>
+</body>
+
+</html>
